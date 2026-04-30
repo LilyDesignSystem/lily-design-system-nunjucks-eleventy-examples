@@ -1,0 +1,112 @@
+---
+layout: layouts/component-demo.njk
+title: Table
+description: a table with rows and columns
+nhsuk: https://service-manual.nhs.uk/design-system/components/table
+---
+
+{% from "components/table/macro.njk" import table %}
+{% from "components/table-head/macro.njk" import TableHead %}
+{% from "components/table-body/macro.njk" import TableBody %}
+{% from "components/table-foot/macro.njk" import tableFoot %}
+{% from "components/table-row/macro.njk" import tableRow %}
+{% from "components/table-th/macro.njk" import tableCol %}
+{% from "components/table-td/macro.njk" import TableTD %}
+
+<h2>Default — appointment list</h2>
+{% call table({ caption: "Your upcoming appointments" }) %}
+  {% call TableHead() %}
+    {% call tableRow() %}
+      {{ tableCol({ text: "Date" }) }}
+      {{ tableCol({ text: "Clinician" }) }}
+      {{ tableCol({ text: "Type" }) }}
+      {{ tableCol({ text: "Location" }) }}
+    {% endcall %}
+  {% endcall %}
+  {% call TableBody() %}
+    {% call tableRow() %}
+      {{ TableTD({ text: "27 April 2026, 9:30am" }) }}
+      {{ TableTD({ text: "Dr Patel" }) }}
+      {{ TableTD({ text: "GP review" }) }}
+      {{ TableTD({ text: "High Street Surgery" }) }}
+    {% endcall %}
+    {% call tableRow() %}
+      {{ TableTD({ text: "4 May 2026, 2:15pm" }) }}
+      {{ TableTD({ text: "Nurse Ahmed" }) }}
+      {{ TableTD({ text: "Blood test" }) }}
+      {{ TableTD({ text: "Main Clinic" }) }}
+    {% endcall %}
+    {% call tableRow() %}
+      {{ TableTD({ text: "19 May 2026, 11:00am" }) }}
+      {{ TableTD({ text: "Dr Smith" }) }}
+      {{ TableTD({ text: "Follow-up" }) }}
+      {{ TableTD({ text: "High Street Surgery" }) }}
+    {% endcall %}
+  {% endcall %}
+{% endcall %}
+
+<h2>Numeric columns — weather observations</h2>
+{% call table({ caption: "Recent weather observations" }) %}
+  {% call TableHead() %}
+    {% call tableRow() %}
+      {{ tableCol({ text: "Date" }) }}
+      {{ tableCol({ text: "Temperature (°C)", classes: "table-col-numeric" }) }}
+      {{ tableCol({ text: "Rainfall (mm)", classes: "table-col-numeric" }) }}
+      {{ tableCol({ text: "Wind (km/h)", classes: "table-col-numeric" }) }}
+    {% endcall %}
+  {% endcall %}
+  {% call TableBody() %}
+    {% call tableRow() %}
+      {{ TableTD({ text: "12 Apr" }) }}
+      {{ TableTD({ text: "14", classes: "table-data-numeric" }) }}
+      {{ TableTD({ text: "3.2", classes: "table-data-numeric" }) }}
+      {{ TableTD({ text: "18", classes: "table-data-numeric" }) }}
+    {% endcall %}
+    {% call tableRow() %}
+      {{ TableTD({ text: "19 Apr" }) }}
+      {{ TableTD({ text: "16", classes: "table-data-numeric" }) }}
+      {{ TableTD({ text: "0.0", classes: "table-data-numeric" }) }}
+      {{ TableTD({ text: "12", classes: "table-data-numeric" }) }}
+    {% endcall %}
+    {% call tableRow() %}
+      {{ TableTD({ text: "26 Apr" }) }}
+      {{ TableTD({ text: "15", classes: "table-data-numeric" }) }}
+      {{ TableTD({ text: "1.4", classes: "table-data-numeric" }) }}
+      {{ TableTD({ text: "20", classes: "table-data-numeric" }) }}
+    {% endcall %}
+  {% endcall %}
+  {% call tableFoot() %}
+    {% call tableRow() %}
+      {{ tableCol({ text: "Average", scope: "row" }) }}
+      {{ TableTD({ text: "15", classes: "table-data-numeric" }) }}
+      {{ TableTD({ text: "1.5", classes: "table-data-numeric" }) }}
+      {{ TableTD({ text: "17", classes: "table-data-numeric" }) }}
+    {% endcall %}
+  {% endcall %}
+{% endcall %}
+
+<h2>Row headers</h2>
+<p>Use <code>TableTD</code> with <code>scope="row"</code> to mark a
+  row header, so screen readers announce it together with each data
+  cell in the row.</p>
+{% call table({ caption: "Dosage schedule" }) %}
+  {% call TableHead() %}
+    {% call tableRow() %}
+      {{ tableCol({ text: "Day" }) }}
+      {{ tableCol({ text: "Morning" }) }}
+      {{ tableCol({ text: "Evening" }) }}
+    {% endcall %}
+  {% endcall %}
+  {% call TableBody() %}
+    {% call tableRow() %}
+      {{ tableCol({ text: "Monday", scope: "row" }) }}
+      {{ TableTD({ text: "1 tablet" }) }}
+      {{ TableTD({ text: "1 tablet" }) }}
+    {% endcall %}
+    {% call tableRow() %}
+      {{ tableCol({ text: "Tuesday", scope: "row" }) }}
+      {{ TableTD({ text: "1 tablet" }) }}
+      {{ TableTD({ text: "2 tablets" }) }}
+    {% endcall %}
+  {% endcall %}
+{% endcall %}

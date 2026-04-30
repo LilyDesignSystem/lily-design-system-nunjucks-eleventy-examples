@@ -1,0 +1,47 @@
+{% extends "layouts/base.njk" %}
+
+{% block breadcrumb %}
+{% from "components/breadcrumb-nav/macro.njk" import breadcrumbNav %}
+{% from "components/breadcrumb-list/macro.njk" import breadcrumbList %}
+{% from "components/breadcrumb-list-item/macro.njk" import breadcrumbListItem %}
+{% from "components/breadcrumb-link/macro.njk" import breadcrumbLink %}
+
+{% call breadcrumbNav() %}
+  {% call breadcrumbList() %}
+    {% call breadcrumbListItem() %}
+      {{ breadcrumbLink({ href: "/", text: "Home" }) }}
+    {% endcall %}
+    {% call breadcrumbListItem() %}
+      {{ breadcrumbLink({ href: "/components/", text: "Components" }) }}
+    {% endcall %}
+    {{ breadcrumbListItem({ text: title, current: true }) }}
+  {% endcall %}
+{% endcall %}
+{% endblock %}
+
+{% block content %}
+<article class="component-demo">
+  <header class="component-demo-header">
+    <h1>{{ title }}</h1>
+    {% if description %}<p class="lead">{{ description }}</p>{% endif %}
+  </header>
+
+  <section class="component-demo-examples">
+    {{ content | safe }}
+  </section>
+
+  {% if accessibility %}
+  <section class="component-demo-accessibility">
+    <h2>Accessibility</h2>
+    {{ accessibility | safe }}
+  </section>
+  {% endif %}
+
+  {% if nhsuk %}
+  <section class="component-demo-references">
+    <h2>NHS UK reference</h2>
+    <p><a href="{{ nhsuk }}">{{ nhsuk }}</a></p>
+  </section>
+  {% endif %}
+</article>
+{% endblock %}

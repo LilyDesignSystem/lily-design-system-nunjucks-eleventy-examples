@@ -1,0 +1,111 @@
+---
+layout: layouts/component-demo.njk
+title: Kanban Table
+description: a kanban board table interactive grid for organizing items by status
+---
+
+{% from "components/kanban-table/macro.njk" import kanbanTable %}
+{% from "components/kanban-table-head/macro.njk" import kanbanTableHead %}
+{% from "components/kanban-table-body/macro.njk" import kanbanTableBody %}
+{% from "components/kanban-table-foot/macro.njk" import kanbanTableFoot %}
+{% from "components/kanban-table-row/macro.njk" import kanbanTableRow %}
+{% from "components/kanban-table-th/macro.njk" import kanbanTableTD %}
+{% from "components/kanban-table-td/macro.njk" import kanbanTableTD %}
+
+<h2>Default — appointment list</h2>
+{% call kanbanTable({ caption: "Your upcoming appointments" }) %}
+  {% call kanbanTableHead() %}
+    {% call kanbanTableRow() %}
+      {{ kanbanTableTD({ text: "Date" }) }}
+      {{ kanbanTableTD({ text: "Clinician" }) }}
+      {{ kanbanTableTD({ text: "Type" }) }}
+      {{ kanbanTableTD({ text: "Location" }) }}
+    {% endcall %}
+  {% endcall %}
+  {% call kanbanTableBody() %}
+    {% call kanbanTableRow() %}
+      {{ kanbanTableTD({ text: "27 April 2026, 9:30am" }) }}
+      {{ kanbanTableTD({ text: "Dr Patel" }) }}
+      {{ kanbanTableTD({ text: "GP review" }) }}
+      {{ kanbanTableTD({ text: "High Street Surgery" }) }}
+    {% endcall %}
+    {% call kanbanTableRow() %}
+      {{ kanbanTableTD({ text: "4 May 2026, 2:15pm" }) }}
+      {{ kanbanTableTD({ text: "Nurse Ahmed" }) }}
+      {{ kanbanTableTD({ text: "Blood test" }) }}
+      {{ kanbanTableTD({ text: "Main Clinic" }) }}
+    {% endcall %}
+    {% call kanbanTableRow() %}
+      {{ kanbanTableTD({ text: "19 May 2026, 11:00am" }) }}
+      {{ kanbanTableTD({ text: "Dr Smith" }) }}
+      {{ kanbanTableTD({ text: "Follow-up" }) }}
+      {{ kanbanTableTD({ text: "High Street Surgery" }) }}
+    {% endcall %}
+  {% endcall %}
+{% endcall %}
+
+<h2>Numeric columns — weather observations</h2>
+{% call kanbanTable({ caption: "Recent weather observations" }) %}
+  {% call kanbanTableHead() %}
+    {% call kanbanTableRow() %}
+      {{ kanbanTableTD({ text: "Date" }) }}
+      {{ kanbanTableTD({ text: "Temperature (°C)", classes: "table-col-numeric" }) }}
+      {{ kanbanTableTD({ text: "Rainfall (mm)", classes: "table-col-numeric" }) }}
+      {{ kanbanTableTD({ text: "Wind (km/h)", classes: "table-col-numeric" }) }}
+    {% endcall %}
+  {% endcall %}
+  {% call kanbanTableBody() %}
+    {% call kanbanTableRow() %}
+      {{ kanbanTableTD({ text: "12 Apr" }) }}
+      {{ kanbanTableTD({ text: "14", classes: "table-data-numeric" }) }}
+      {{ kanbanTableTD({ text: "3.2", classes: "table-data-numeric" }) }}
+      {{ kanbanTableTD({ text: "18", classes: "table-data-numeric" }) }}
+    {% endcall %}
+    {% call kanbanTableRow() %}
+      {{ kanbanTableTD({ text: "19 Apr" }) }}
+      {{ kanbanTableTD({ text: "16", classes: "table-data-numeric" }) }}
+      {{ kanbanTableTD({ text: "0.0", classes: "table-data-numeric" }) }}
+      {{ kanbanTableTD({ text: "12", classes: "table-data-numeric" }) }}
+    {% endcall %}
+    {% call kanbanTableRow() %}
+      {{ kanbanTableTD({ text: "26 Apr" }) }}
+      {{ kanbanTableTD({ text: "15", classes: "table-data-numeric" }) }}
+      {{ kanbanTableTD({ text: "1.4", classes: "table-data-numeric" }) }}
+      {{ kanbanTableTD({ text: "20", classes: "table-data-numeric" }) }}
+    {% endcall %}
+  {% endcall %}
+  {% call kanbanTableFoot() %}
+    {% call kanbanTableRow() %}
+      {{ kanbanTableTD({ text: "Average", scope: "row" }) }}
+      {{ kanbanTableTD({ text: "15", classes: "table-data-numeric" }) }}
+      {{ kanbanTableTD({ text: "1.5", classes: "table-data-numeric" }) }}
+      {{ kanbanTableTD({ text: "17", classes: "table-data-numeric" }) }}
+    {% endcall %}
+  {% endcall %}
+{% endcall %}
+
+<h2>Row headers</h2>
+<p>Use <code>TableTD</code> with <code>scope="row"</code> to mark a
+  row header, so screen readers announce it together with each data
+  cell in the row.</p>
+{% call kanbanTable({ caption: "Dosage schedule" }) %}
+  {% call kanbanTableHead() %}
+    {% call kanbanTableRow() %}
+      {{ kanbanTableTD({ text: "Day" }) }}
+      {{ kanbanTableTD({ text: "Morning" }) }}
+      {{ kanbanTableTD({ text: "Evening" }) }}
+    {% endcall %}
+  {% endcall %}
+  {% call kanbanTableBody() %}
+    {% call kanbanTableRow() %}
+      {{ kanbanTableTD({ text: "Monday", scope: "row" }) }}
+      {{ kanbanTableTD({ text: "1 tablet" }) }}
+      {{ kanbanTableTD({ text: "1 tablet" }) }}
+    {% endcall %}
+    {% call kanbanTableRow() %}
+      {{ kanbanTableTD({ text: "Tuesday", scope: "row" }) }}
+      {{ kanbanTableTD({ text: "1 tablet" }) }}
+      {{ kanbanTableTD({ text: "2 tablets" }) }}
+    {% endcall %}
+  {% endcall %}
+{% endcall %}
