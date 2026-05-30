@@ -1,4 +1,4 @@
-.qr-code {
+.qr-code-image {
   display: block;
   image-rendering: pixelated;
   background: var(--nhsuk-white);
