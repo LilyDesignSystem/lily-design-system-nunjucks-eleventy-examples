@@ -3,10 +3,10 @@
 Living specification for the Eleventy 3 + Nunjucks example app that
 demonstrates the Lily Design System. Single source of truth for spec-driven
 development of this subproject. For project-wide rules, read the root
-[spec.md](../spec.md) first.
+[spec/index.md](../../spec/index.md) first.
 
 This file adds Eleventy-specific detail and tracks the example app's
-implementation status against the **492 canonical components**.
+implementation status against the **490 canonical components**.
 
 ---
 
@@ -91,14 +91,14 @@ lily-design-system-nunjucks-eleventy-examples/
 ├── src/
 │   ├── _data/
 │   │   ├── site.js                        ← site name, language, nav metadata
-│   │   └── components.js                  ← catalog inventory (492 entries)
+│   │   └── components.js                  ← catalog inventory (490 entries)
 │   ├── _includes/
 │   │   └── layouts/
 │   │       ├── base.njk                   ← global shell, skip-link, header,
 │   │       │                                footer, NHS CSS link
 │   │       ├── page.njk
 │   │       └── component-demo.njk         ← /components/{slug}/ template
-│   ├── components/{kebab-case}.njk        ← one file per canonical slug (492)
+│   ├── components/{kebab-case}.njk        ← one file per canonical slug (490)
 │   ├── contact-form/index.njk             ← composed-page demos (12)
 │   ├── dashboard/index.njk
 │   └── …
@@ -131,7 +131,7 @@ the other example apps).
 - Plain CSS in `src/assets/css/` with NHS-aligned CSS custom properties.
 - CSS selectors target the kebab-case Lily class names directly.
 - No CSS framework dependency.
-- Theme tokens follow [../AGENTS/theme.md](../AGENTS/theme.md).
+- Theme tokens follow [../AGENTS/theme.md](../../AGENTS/theme.md).
 - Frutiger font with Arial fallback per NHS UK spec (no bundled font files).
 
 ## 7. Testing
@@ -159,14 +159,14 @@ pnpm exec playwright test            # e2e tests
 ### 9.1 Routes
 
 - [ ] `/` renders home with skip-link + standard landmarks.
-- [ ] `/components/` lists all 492 canonical components.
-- [ ] `/components/{slug}/` exists for all 492 canonical slugs with a live
+- [ ] `/components/` lists all 490 canonical components.
+- [ ] `/components/{slug}/` exists for all 490 canonical slugs with a live
       demo.
 - [ ] All 12 composed-page demos exist.
 
 ### 9.2 Macro coverage
 
-- [ ] All 492 canonical components have a `src/components/{kebab-case}.njk`
+- [ ] All 490 canonical components have a `src/components/{kebab-case}.njk`
       page that imports the corresponding macro from the headless library.
 - [ ] No orphan slugs.
 
@@ -198,7 +198,7 @@ pnpm exec playwright test            # e2e tests
 - [x] `_data/site.js`, `_data/components.js`.
 - [x] Base layouts in `_includes/layouts/`.
 - [x] NHS CSS in `src/assets/css/`.
-- [x] `src/components/` has 492 + `index.njk` pages.
+- [x] `src/components/` has 490 + `index.njk` pages.
 - [x] Playwright e2e per slug.
 
 ### 10.2 Verified
@@ -237,6 +237,6 @@ pnpm exec playwright test            # e2e tests
 - Package manager: pnpm
 - License: MIT or Apache-2.0 or GPL-2.0 or GPL-3.0 or BSD-3-Clause
 - Contact: Joel Parker Henderson <joel@joelparkerhenderson.com>
-- Canonical catalog: [../components.tsv](../components.tsv) — 492 components
-- Root spec: [../spec.md](../spec.md)
-- Sibling headless library: [../lily-design-system-nunjucks-headless/](../lily-design-system-nunjucks-headless/)
+- Canonical catalog: [../components.tsv](../../components.tsv) — 490 components
+- Root spec: [../spec/index.md](../../spec/index.md)
+- Sibling headless library: [../lily-design-system-nunjucks-headless/](../../lily-design-system-nunjucks-headless/)
