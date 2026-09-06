@@ -1,10 +1,10 @@
 ---
 layout: layouts/component-demo.njk
-title: Northern Ireland H&C Number Input
-description: an input for entering a Northern Ireland Health and Care Number
+title: Tuaisceart Eireann H&C Number Input
+description: an input for entering a Tuaisceart Eireann Health and Care Number
 ---
 
-{% from "components/northern-ireland-health-and-care-number-input/macro.njk" import northernIrelandHealthAndCareNumberInput %}
+{% from "components/tuaisceart-eireann-health-and-care-number-input/macro.njk" import tuaisceartEireannHealthAndCareNumberInput %}
 {% from "components/label/macro.njk" import label %}
 {% from "components/hint/macro.njk" import hint %}
 {% from "components/field/macro.njk" import field %}
@@ -16,7 +16,7 @@ description: an input for entering a Northern Ireland Health and Care Number
     id: "hc-hint",
     text: "Ten digits, for example 485 777 3456."
   }) }}
-  {{ northernIrelandHealthAndCareNumberInput({
+  {{ tuaisceartEireannHealthAndCareNumberInput({
     id: "hc",
     describedBy: "hc-hint"
   }) }}

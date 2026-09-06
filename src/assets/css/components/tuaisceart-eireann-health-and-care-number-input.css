@@ -1,7 +1,7 @@
-.ireland-individual-health-identifier-input {
+.tuaisceart-eireann-health-and-care-number-input {
   display: block;
   width: 100%;
-  max-width: 12rem;
+  max-width: 15rem;
   padding: var(--nhsuk-spacing-2);
   border: 2px solid var(--nhsuk-black);
   background: var(--nhsuk-white);
@@ -13,6 +13,6 @@
   letter-spacing: 0.05em;
 }
 
-.ireland-individual-health-identifier-input[aria-invalid="true"] {
+.tuaisceart-eireann-health-and-care-number-input[aria-invalid="true"] {
   border-color: var(--nhsuk-red);
 }
